@@ -1,0 +1,35 @@
+BASE_URL = "http://172.28.6.163:8080"
+
+MQ_TOPIC = "/brains/#"
+
+TOKEN = "token"
+STATE = "state"
+DEVICE_ID = "deviceId"
+DEVICE_TYPE = "deviceType"
+SITE_NAME = "siteName"
+DEVICE_STATE = "deviceState"
+DEVICE_NAME = "deviceName"
+DEVICE_STATUS = "status"
+CODE = "code"
+SITE_LINE_NAME = "lineName"
+DATA_TYPE = "dataType"
+VALUE_RANGE = "valueRange"
+VALUE = "value"
+MSG_TYPE = "msgType"
+ONLINE = "online"
+USERNAME = "username"
+VALUES = "values"
+ALARM_DATA = "alarmData"
+ALARM_TYPE = "alarmType"
+DEVICE_DATA = "deviceData"
+
+CONNECT_FAILED_NOT_AUTHORISED = 5
+
+#设备动作
+ADD_DEVICE = "add_device"
+DEL_DEVICE = "del_device"
+CREATE_ALARM = "ceate_alarm"
+CLEAR_ALARM = "clear_alarm"
+STATUS_CHANGE = "status_change"
+VALUE_CHANGE = "value_change"
+UPDATE_DEVICE= "update_device"
