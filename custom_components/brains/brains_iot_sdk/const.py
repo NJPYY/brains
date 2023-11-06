@@ -1,4 +1,4 @@
-BASE_URL = "http://172.28.6.163:8080"
+BASE_URL = "http://172.28.6.163:8080/api/home_assistant"
 
 MQ_TOPIC = "/brains/#"
 

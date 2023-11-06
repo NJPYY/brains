@@ -31,10 +31,10 @@ class BrainsApi:
             'Content-Type': 'application/json; charset=UTF-8'
         }
         try:
-            res = requests.post(url=f"{BASE_URL}/user/getToken", json=data, headers=headers)
+            res = requests.post(url=f"{BASE_URL}/getToken", json=data, headers=headers)
             res_json = json.loads(res.text)
             _LOGGER.info(f"开始获取token =>{res_json}")
-            self.token = res_json[TOKEN]
+            self.token = res_json['data'][TOKEN]
             return json.loads(res.text), "ok"
         except:
             _LOGGER.warning(f"获取token失败 userId=>{self.user_id}")
@@ -59,7 +59,7 @@ class BrainsApi:
             "userId": self.user_id,
             "secretKey": self.secret_key
         }
-        res = requests.get(f"{BASE_URL}/device/getDeviceList", params=data, headers=header)
+        res = requests.get(f"{BASE_URL}/getDeviceList", params=data, headers=header)
         device_list = []
         if res.status_code == 200:
             for device_json in json.loads(res.text):
@@ -92,7 +92,7 @@ class BrainsApi:
             "deviceId": device_id,
             "secretKey": self.secret_key
         }
-        res = requests.get(f"{BASE_URL}/device/getDeviceInfo", params=data, headers=header)
+        res = requests.get(f"{BASE_URL}/getDeviceInfo", params=data, headers=header)
         device: BrainsDevice = None
         if res.status_code == 200:
             device = BrainsDevice.from_json(data=res.text)
@@ -108,7 +108,7 @@ class BrainsApi:
             "userId": self.user_id,
             "secretKey": self.secret_key
         }
-        res = requests.get(f"{BASE_URL}/user/getMqConfig", params=data, headers= header)
+        res = requests.get(f"{BASE_URL}/getMqConfig", params=data, headers= header)
         data = json.loads(res.text)
         _LOGGER.info(f"mq_config_data==>{data}")
         return data
