@@ -99,7 +99,10 @@ class TuyaSensorEntity(BrainsEntity, SensorEntity):
         code: str = status["code"]
         arr: tuple = code.split("_")
         data_type = UNITMAP[arr[arr.__len__()-1]]
-        self._attr_name = f"{status['name']}_{data_type}"
+        if status['name']:
+            self._attr_name = f"{status['name']}_{data_type}"
+        else:
+            self._attr_name = f"{data_type}"
 
         if int_type := self.find_dpcode(description.key, dptype=DPType.INTEGER):
             self._type_data = int_type
@@ -107,7 +110,7 @@ class TuyaSensorEntity(BrainsEntity, SensorEntity):
             if description.native_unit_of_measurement is None:
                 self._attr_native_unit_of_measurement = int_type.unit
         elif enum_type := self.find_dpcode(
-            description.key, dptype=DPType.ENUM, prefer_function=True
+            description.key, dptype=DPType.ENUM
         ):
             self._type_data = enum_type
             self._type = DPType.ENUM

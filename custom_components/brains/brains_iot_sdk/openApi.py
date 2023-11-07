@@ -60,9 +60,11 @@ class BrainsApi:
             "secretKey": self.secret_key
         }
         res = requests.get(f"{BASE_URL}/getDeviceList", params=data, headers=header)
+        res_data = json.loads(res.text)
+
         device_list = []
-        if res.status_code == 200:
-            for device_json in json.loads(res.text):
+        if res.status_code == 200 and res_data['success'] and res_data['data']:
+            for device_json in res_data['data']:
                 device = BrainsDevice.from_json(device_json)
                 device_list.append(device)
 
@@ -110,7 +112,5 @@ class BrainsApi:
         }
         res = requests.get(f"{BASE_URL}/getMqConfig", params=data, headers= header)
         data = json.loads(res.text)
-        _LOGGER.info(f"mq_config_data==>{data}")
-        return data
-
-
+        _LOGGER.info(f"mq_config_data==>{data['data']}")
+        return data['data']

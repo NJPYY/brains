@@ -168,7 +168,7 @@ SENSORS: dict[str, tuple[SensorEntityDescription, ...]] = {
         ),
         #电压
         SensorEntityDescription(
-            key="BRS_Ua",
+            key="BRS_U",
             translation_key="voltage",
             state_class = SensorStateClass.MEASUREMENT,
             device_class=NumberDeviceClass.VOLTAGE,

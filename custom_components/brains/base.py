@@ -194,12 +194,12 @@ class BrainsEntity(Entity):
             if dpcode != statu["code"]:
                 continue
             if ( dptype == DPType.ENUM and statu["type"] == DPType.ENUM ):
-                if not ( enum_type := EnumTypeData.from_json(statu["value_range"])):
+                if not ( enum_type := EnumTypeData.from_json(statu["valueRange"])):
                     return None
                 return enum_type
 
             if (dptype == DPType.INTEGER and statu["type"] == DPType.INTEGER):
-                if not (integer_type := IntegerTypeData.from_json(statu["value_range"])):
+                if not (integer_type := IntegerTypeData.from_json(statu["valueRange"])):
                     return None
                 return integer_type
 
