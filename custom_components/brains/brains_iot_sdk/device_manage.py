@@ -55,7 +55,7 @@ class DeviceManage:
     def update_device_value(self, msg):
         _LOGGER.info(f"update device values, deviceId is {msg[DEVICE_ID]}, values is {msg[VALUES]}")
         values_map: dict = {}
-        for value in msg[VALUES]:
+        for value in msg[VALUES]["status"]:
             values_map[value[CODE]] = value[VALUE]
         device: BrainsDevice = self.device_map[msg[DEVICE_ID]]
         status = device.status

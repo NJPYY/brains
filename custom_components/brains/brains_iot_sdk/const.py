@@ -1,6 +1,6 @@
-BASE_URL = "http://172.28.6.163:8085/newpower_home/api/home_assistant"
+BASE_URL = "http://172.28.6.163:8085/power_home/api/home_assistant"
 
-MQ_TOPIC = "/brains/#"
+MQ_TOPIC = "/brains/ha/#"
 
 TOKEN = "token"
 STATE = "state"

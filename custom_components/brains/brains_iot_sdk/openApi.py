@@ -114,3 +114,5 @@ class BrainsApi:
         data = json.loads(res.text)
         _LOGGER.info(f"mq_config_data==>{data['data']}")
         return data['data']
+
+
