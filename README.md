@@ -1,6 +1,6 @@
 ![img](images/1.png)
 
-一个用于 Home Assistant 的自定义集成，适用于 Brains 智能设备。
+一个用于 Home Assistant 的自定义集成，适用于博瑞思智能设备。
 
 ### 支持的设备
 
