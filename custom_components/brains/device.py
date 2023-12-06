@@ -30,6 +30,7 @@ class HADeviceListener(DeviceListener):
         Args:
             device_id: str
         """
+        self._hass.add_job(self.async_remove_device, device.id)
         dispatcher_send(self._hass, DISCOVER_BRAINS_DEVICE, [device.id])
     def add_device(self, new_device: BrainsDevice):
         _LOGGER.info(f"Add a device from brains cloud, new_device is {new_device}")

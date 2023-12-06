@@ -112,19 +112,25 @@ class DeviceManage:
 
 
     def add_device(self, msg):
-        _LOGGER.info(f"add a new device, device data is {msg[DEVICE_DATA]}")
-        device_data = msg[DEVICE_DATA]
-        new_device = BrainsDevice.from_json(device_data)
+        _LOGGER.info(f"add a new device, device_id data is {msg[DEVICE_ID]}")
+        device_id = msg[DEVICE_ID]
+        new_device = self.api.get_device(device_id)
+        # device_data = msg[DEVICE_DATA]
+        # new_device = BrainsDevice.from_json(device_data)
         self.device_map[new_device.id] = new_device
         for listener in self.device_listeners:
             listener.add_device(new_device)
 
     def update_device(self, msg):
-        _LOGGER.info(f"update device info, new device info is {msg[DEVICE_DATA]}")
-        device: BrainsDevice = BrainsDevice.from_json(msg[DEVICE_DATA])
-        self.device_map[device.id] = device
+        _LOGGER.info(f"update device info, new device info is {msg[DEVICE_ID]}")
+        device_id = msg[DEVICE_ID]
+        new_device = self.api.get_device(device_id)
+        # device: BrainsDevice = BrainsDevice.from_json(msg[DEVICE_DATA])
+        if not new_device:
+            return
+        self.device_map[new_device.id] = new_device
         for listener in self.device_listeners:
-            listener.update_device(device)
+            listener.update_device(new_device)
 
     def add_listener(self, listener: DeviceListener):
         self.device_listeners.add(listener)

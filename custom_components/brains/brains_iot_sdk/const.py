@@ -1,4 +1,4 @@
-BASE_URL = "http://172.28.6.163:8085/power_home/api/home_assistant"
+BASE_URL = "https://www.brains-info.com/power_home/api/home_assistant"
 
 MQ_TOPIC = "/brains/ha/#"
 

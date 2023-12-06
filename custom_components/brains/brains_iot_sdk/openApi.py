@@ -97,7 +97,9 @@ class BrainsApi:
         res = requests.get(f"{BASE_URL}/getDeviceInfo", params=data, headers=header)
         device: BrainsDevice = None
         if res.status_code == 200:
-            device = BrainsDevice.from_json(data=res.text)
+            res_data = json.loads(res.text)
+            if res_data["data"] and res_data["data"][0]:
+                device = BrainsDevice.from_json(res_data["data"][0])
         return device
 
     def get_mq_config(self):
